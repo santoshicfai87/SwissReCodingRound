@@ -10,14 +10,17 @@ import java.util.Set;
 
 public class CompanyTestDatabase {
     protected static Set<Employee> employees = new LinkedHashSet<>();
-    protected static Set<Manager> managers = new LinkedHashSet<>();
-    protected static Map<Long, Manager> employeeManagerMap = new HashMap<>();
+    protected static Set<Manager> managersLessThanAvgSalary = new LinkedHashSet<>();
+    protected static Set<Manager> managersMoreThanAvgSalary = new LinkedHashSet<>();
 
     protected static void addEmployees(Set<Employee> employeesData){
         employees.addAll(employeesData);
     }
 
-    protected static void addManagers(Set<Manager> managers){
-        managers.addAll(managers);
+    protected static void addManagersLessThanAvgSalary(Set<Manager> managerSet){
+        managersLessThanAvgSalary.addAll(managerSet);
+    }
+    protected static void addManagersMoreThanAvgSalary(Set<Manager> managerSet){
+        managersMoreThanAvgSalary.addAll(managerSet);
     }
 }

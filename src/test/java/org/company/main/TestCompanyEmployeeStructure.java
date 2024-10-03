@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,19 +33,30 @@ public class TestCompanyEmployeeStructure {
 
     @Test
     public void testManagerLessThanTheyShould() {
-        Employee employee = EmployeeTestUtil.createEmployee(Long.valueOf(308), "Brett2", "Hardleaf2", 16000.0, Long.valueOf(307), 5);
-        Set<Manager> managerSet = EmployeeTestUtil.getManageret().stream()
+        Employee employee1 = EmployeeTestUtil.createEmployee(Long.valueOf(401), "Brett2", "Hardleaf2", 10000.0, Long.valueOf(307), 5);
+        Employee employee2 = EmployeeTestUtil.createEmployee(Long.valueOf(402), "Brett3", "Hardleaf3", 10000.0, Long.valueOf(307), 5);
+        Set<Employee> employeeSet = new HashSet<>();
+        employeeSet.add(employee1);
+        employeeSet.add(employee2);
+        Manager manager = EmployeeTestUtil.createManager(Long.valueOf(307), Long.valueOf(124), 20000.0, 5000.0, 0.0, true, false, employeeSet);
+        Set<Manager> managerSet = EmployeeTestUtil.getManagerSetLessThanAvgSalary().stream()
                 .filter(EmployeeTestUtil.getManagerLessThanAvgSalary())
                 .collect(Collectors.toSet());
-        assertTrue(!managerSet.contains(employee));
+        assertTrue(managerSet.contains(manager));
     }
 
     @Test
     public void testManagerMoreThanTheyShould() {
-        Employee employee = EmployeeTestUtil.createEmployee(Long.valueOf(309), "Brett2", "Hardleaf2", 16000.0, Long.valueOf(307), 5);
-        Set<Manager> managerSet = EmployeeTestUtil.getManageret().stream()
+        Employee employee1 = EmployeeTestUtil.createEmployee(Long.valueOf(401), "Brett2", "Hardleaf2", 10000.0, Long.valueOf(307), 5);
+        Employee employee2 = EmployeeTestUtil.createEmployee(Long.valueOf(402), "Brett3", "Hardleaf3", 10000.0, Long.valueOf(307), 5);
+        Set<Employee> employeeSet = new HashSet<>();
+        employeeSet.add(employee1);
+        employeeSet.add(employee2);
+        Manager manager = EmployeeTestUtil.createManager(Long.valueOf(307), Long.valueOf(124), 50000.0, 5000.0, 0.0, true, false, employeeSet);
+        EmployeeTestUtil.getManagerSetLessThanAvgSalary();
+        Set<Manager> managerSet = EmployeeTestUtil.getManagerSetMoreThanAvgSalary().stream()
                 .filter(EmployeeTestUtil.getManagerMoreThanAvgSalary())
                 .collect(Collectors.toSet());
-        assertTrue(!managerSet.contains(employee));
+        assertTrue(managerSet.contains(manager));
     }
 }

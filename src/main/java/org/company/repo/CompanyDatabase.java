@@ -20,18 +20,6 @@ public class CompanyDatabase {
         employees.add(employee);
     }
 
-    protected static void updateEmployees(Set<Employee> employees) {
-        employees.addAll(employees);
-    }
-
-    protected static void insertManager(Manager manager) {
-        managers.add(manager);
-    }
-
-    protected static void updateManager(Set<Manager> managers) {
-        managers.addAll(managers);
-    }
-
     protected static void insertManagerIntoManagerMap(Employee employee) {
         if (employee.getManagerId() != CompanyConfig.DEFAULT_EMPLOYEE_ID) {
             employeeManagerMap.computeIfAbsent(employee.getManagerId(), k -> new Manager(employee.getManagerId(), DEFAULT_EMPLOYEE_ID, DEFAULT_EMPLOYEE_SALARY, DEFAULT_EMPLOYEE_SALARY, DEFAULT_EMPLOYEE_SALARY, false, false, new HashSet<>()));
@@ -49,8 +37,4 @@ public class CompanyDatabase {
             return v;
         });
     }
-/*    public static Manager getManagerForEmployee(Employee employee) {
-        employeeManagerMap.computeIfAbsent(employee, k -> new Manager(employee.getManagerId(), DEFAULT_EMPLOYEE_SALARY, false, false, Collections.emptySet()));
-        return employeeManagerMap.get(employee);
-    }*/
 }

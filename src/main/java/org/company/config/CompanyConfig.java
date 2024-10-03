@@ -6,8 +6,6 @@ public interface CompanyConfig {
     public static String DEFAULT_EMPLOYEE_NAME = "";
     public static long DEFAULT_EMPLOYEE_ID = 0;
     public static Double DEFAULT_EMPLOYEE_SALARY = 0.0;
-
-    public static int DEFAULT_INDEX = 1;
     public static int DEFAULT_SIZE = 0;
     public static int EMPLOYEE_ID_INDEX = 0;
     public static int EMPLOYEE_FIRST_NAME_INDEX = 1;

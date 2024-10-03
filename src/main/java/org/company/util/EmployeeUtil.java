@@ -71,10 +71,6 @@ public class EmployeeUtil extends CompanyDatabase {
         }
     }
 
-    public static Manager getManagerForGivenEmployee(Employee employee) {
-        return CompanyDatabase.employeeManagerMap.get(employee.getManagerId());
-    }
-
     public static Set<Employee> getEmployeeList() {
         return CompanyDatabase.employees;
     }
@@ -84,14 +80,6 @@ public class EmployeeUtil extends CompanyDatabase {
         return (manager.getEmployeeSet().stream().map(Employee::getSalary).reduce(0.0, (a, b) -> a + b)) / size;
     }
 
-
-    public static void printEmployeeList(List<Employee> employees) {
-        if (employees != null) {
-            employees.forEach(System.out::println);
-        } else {
-            CompanyDatabase.employees.forEach(System.out::println);
-        }
-    }
 
     public static void printManagerLessThanTheyShould() {
         System.out.println("##########  managers earn less than they should, and by how much(minSalaryDiff) ##########");
